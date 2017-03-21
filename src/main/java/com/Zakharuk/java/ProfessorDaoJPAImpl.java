@@ -38,4 +38,11 @@ public class ProfessorDaoJPAImpl implements ProfessorDao {
             //System.out.println(prof);
         return professors;
     }
+
+    public List<Professor> findByName(String name) {
+        TypedQuery<Professor> query = em.createQuery("SELECT c FROM Professor c where c.firstName = :fname", Professor.class);
+        query.setParameter("fname", name);
+        List<Professor> professors = query.getResultList();
+        return professors;
+    }
 }

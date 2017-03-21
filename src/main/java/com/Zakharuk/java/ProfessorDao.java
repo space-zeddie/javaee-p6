@@ -12,4 +12,6 @@ public interface ProfessorDao {
 
     void saveProfessor(Professor professor);
     List<Professor> listAllProfessors();
+
+    List<Professor> findByName(String name);
 }

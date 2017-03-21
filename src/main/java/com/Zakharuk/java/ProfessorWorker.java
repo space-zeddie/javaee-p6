@@ -21,4 +21,8 @@ public class ProfessorWorker {
     public List<Professor> listAll() {
         return professorDao.listAllProfessors();
     }
+
+    public List<Professor> findByName(String name) {
+        return professorDao.findByName(name);
+    }
 }

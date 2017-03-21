@@ -53,7 +53,10 @@ public class App {
         for (Professor p : allprofs)
             System.out.println(p.getProfessorId());
 
-        
+        allprofs = professorWorker.findByName("Andrii");
+        for (Professor p : allprofs)
+            System.out.println(p.getProfessorId());
+
     }
 
 }
