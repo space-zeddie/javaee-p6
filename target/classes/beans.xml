@@ -37,4 +37,6 @@
     </bean>
 
     <bean id="worker" class="com.Zakharuk.java.LecturesWorker"/>
+    <bean id="workerProf" class="com.Zakharuk.java.ProfessorWorker"/>
+    <bean id="workerFaculty" class="com.Zakharuk.java.FacultyWorker"/>
 </beans>

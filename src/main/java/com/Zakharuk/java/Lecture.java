@@ -4,6 +4,7 @@ package com.Zakharuk.java;
  * Created by matvii on 08.03.17.
  */
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="Lectures")
@@ -15,7 +16,21 @@ public class Lecture {
     private String name;
     private double credits;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "prof_lec",
+            joinColumns = @JoinColumn(name = "lecture_id"),
+            inverseJoinColumns = @JoinColumn(name = "professor_id"))
+    private List<Professor> professors;
+
     public Lecture(){}
+
+    public List<Professor> getProfessors() {
+        return professors;
+    }
+
+    public void setProfessors(List<Professor> professors) {
+        this.professors = professors;
+    }
 
     public int getId() {
         return id;
@@ -39,5 +54,14 @@ public class Lecture {
 
     public void setCredits(double credits) {
         this.credits = credits;
+    }
+
+    @Override
+    public String toString() {
+        return "Lecture{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", credits=" + credits +
+                '}';
     }
 }
