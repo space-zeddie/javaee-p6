@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Cacheable(true)
 @Table(name="Lectures")
 public class Lecture {
     @Id

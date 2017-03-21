@@ -7,15 +7,18 @@ import java.util.List;
  * Created by matvii on 21.03.17.
  */
 @Entity
+@Cacheable(true)
 @Table(name="Professors")
 @NamedQueries({
         @NamedQuery(name = Professor.FIND_ALL, query="select c from Professor c"),
-        @NamedQuery(name = Professor.FIND_WITH_PARAM, query="select c from Professor c where c.firstName = :fname")
+        @NamedQuery(name = Professor.FIND_WITH_PARAM, query="select c from Professor c where c.firstName = :fname"),
+        @NamedQuery(name = Professor.FIND_BY_ID, query="select c from Professor c where c.professorId = :id")
 })
 public class Professor {
 
     public static final String FIND_ALL = "Professor.findAll";
     public static final String FIND_WITH_PARAM = "Professor.findWithParam";
+    public static final String FIND_BY_ID = "Professor.findById";
 
     @Id
     @GeneratedValue

@@ -3,9 +3,7 @@ package com.Zakharuk.java;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +15,7 @@ public class App {
 
     public static void main( String[] args ) {
         ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-        /*Lecture lecture = new Lecture();
+        Lecture lecture = new Lecture();
         lecture.setName("Introduction to Spring");
         lecture.setCredits(2.5);
         List<Lecture> lectureList = new ArrayList<Lecture>();
@@ -38,16 +36,23 @@ public class App {
         faculty.setProfessors(professorList);
 
         professor.setFaculty(faculty);
-        dean.setFaculty(faculty);*/
+        dean.setFaculty(faculty);
 
         LecturesWorker worker = (LecturesWorker)context.getBean("worker");
         ProfessorWorker professorWorker = (ProfessorWorker)context.getBean("workerProf");
         FacultyWorker facultyWorker = (FacultyWorker)context.getBean("workerFaculty");
-       /* worker.addLecture(lecture);
+        EntityManagerFactory emf = (EntityManagerFactory)context.getBean("emf");
+
+
+        worker.addLecture(lecture);
 
         facultyWorker.addFaculty(faculty);
         professorWorker.addProfessor(dean);
-        professorWorker.addProfessor(professor);*/
+        professorWorker.addProfessor(professor);
+        Cache cache = emf.getCache();
+        System.out.println(cache.contains(Professor.class, professor.getProfessorId()));
+        cache.evict(Professor.class);
+        System.out.println(cache.contains(Professor.class, professor.getProfessorId()));
 
         List<Professor> allprofs = professorWorker.listAll();
         for (Professor p : allprofs)

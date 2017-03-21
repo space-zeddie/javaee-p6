@@ -41,4 +41,9 @@ public class ProfessorDaoJPAImpl implements ProfessorDao {
         List<Professor> professors = query.getResultList();
         return professors;
     }
+
+    public void changeName(int id, String newName) {
+        TypedQuery<Professor> query = em.createQuery("SELECT c from Professor c", Professor.class);
+
+    }
 }

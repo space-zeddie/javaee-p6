@@ -7,6 +7,7 @@ import java.util.List;
  * Created by matvii on 21.03.17.
  */
 @Entity
+@Cacheable(true)
 @Table(name="Faculties")
 public class Faculty {
 
