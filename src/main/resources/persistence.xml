@@ -5,7 +5,7 @@
                                  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
     <persistence-unit name="myUnit" transaction-type="RESOURCE_LOCAL">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <class>com.Zakharuk.java.Faculty</class>
         <class>com.Zakharuk.java.Lecture</class>
         <class>com.Zakharuk.java.Professor</class>
@@ -14,6 +14,7 @@
 <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
 <property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:chapter06DB;create=true"/>
             <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="hibernate.enable_lazy_load_no_trans" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>

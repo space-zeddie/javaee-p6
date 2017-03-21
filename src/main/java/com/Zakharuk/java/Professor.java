@@ -97,8 +97,8 @@ public class Professor {
 
     @Override
     public String toString() {
-        String response = "Teacher{" +
-                "teacherId=" + professorId +
+        String response = "Professor{" +
+                "professorId=" + professorId +
                 ", firstname='" + firstName + '\'' +
                 ", lastname='" + lastName + '\'' +
                 ", cellphone='" + cellphone + '\'' +

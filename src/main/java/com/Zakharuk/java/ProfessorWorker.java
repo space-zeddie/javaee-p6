@@ -2,6 +2,9 @@ package com.Zakharuk.java;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.PersistenceContext;
+import java.util.List;
+
 /**
  * Created by matvii on 21.03.17.
  */
@@ -13,5 +16,9 @@ public class ProfessorWorker {
         professor = professorDao.addProfessor(professor);
         System.out.println(professor);
         return professor;
+    }
+
+    public List<Professor> listAll() {
+        return professorDao.listAllProfessors();
     }
 }
