@@ -21,13 +21,20 @@ public class App {
 
         Professor professor = new Professor("Andrii", "Glybovets", "0000");
         professor.setLectures(lectureList);
+        Professor dean = new Professor("Mykola", "Glybovets", "0001");
+        dean.setLectures(lectureList);
+        professor.setDean(dean);
+        dean.setDean(dean);
+
         List<Professor> professorList = new ArrayList<Professor>();
         professorList.add(professor);
+        professorList.add(dean);
 
         Faculty faculty = new Faculty("FI");
         faculty.setProfessors(professorList);
 
         professor.setFaculty(faculty);
+        dean.setFaculty(faculty);
 
         LecturesWorker worker = (LecturesWorker)context.getBean("worker");
         ProfessorWorker professorWorker = (ProfessorWorker)context.getBean("workerProf");
@@ -35,6 +42,7 @@ public class App {
         worker.addLecture(lecture);
 
         facultyWorker.addFaculty(faculty);
+        professorWorker.addProfessor(dean);
         professorWorker.addProfessor(professor);
     }
 

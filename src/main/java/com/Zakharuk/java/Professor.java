@@ -34,6 +34,11 @@ public class Professor {
             inverseJoinColumns = @JoinColumn(name = "professor_id"))
     private List<Lecture> lectures;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    //@JoinColumn(name = "dean_id")
+    @PrimaryKeyJoinColumn
+    private Professor dean;
+
     public Professor(String firstName, String lastName, String cellphone) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -46,6 +51,14 @@ public class Professor {
 
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
+    }
+
+    public Professor getDean() {
+        return dean;
+    }
+
+    public void setDean(Professor dean) {
+        this.dean = dean;
     }
 
     public Professor() {
