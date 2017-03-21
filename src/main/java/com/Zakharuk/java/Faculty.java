@@ -18,7 +18,7 @@ public class Faculty {
     @Column(name="name")
     private String name;
 
-    @OneToMany(mappedBy = "faculty")
+    @OneToMany(mappedBy = "faculty", orphanRemoval = true)
     private List<Professor> professors;
 
     public Faculty(){}

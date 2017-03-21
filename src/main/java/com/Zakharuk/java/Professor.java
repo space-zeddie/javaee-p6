@@ -34,8 +34,7 @@ public class Professor {
             inverseJoinColumns = @JoinColumn(name = "professor_id"))
     private List<Lecture> lectures;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    //@JoinColumn(name = "dean_id")
+    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true)
     @PrimaryKeyJoinColumn
     private Professor dean;
 
