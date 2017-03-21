@@ -41,18 +41,12 @@ public class App {
         LecturesWorker worker = (LecturesWorker)context.getBean("worker");
         ProfessorWorker professorWorker = (ProfessorWorker)context.getBean("workerProf");
         FacultyWorker facultyWorker = (FacultyWorker)context.getBean("workerFaculty");
-        EntityManagerFactory emf = (EntityManagerFactory)context.getBean("emf");
-
 
         worker.addLecture(lecture);
 
         facultyWorker.addFaculty(faculty);
         professorWorker.addProfessor(dean);
         professorWorker.addProfessor(professor);
-        Cache cache = emf.getCache();
-        System.out.println(cache.contains(Professor.class, professor.getProfessorId()));
-        cache.evict(Professor.class);
-        System.out.println(cache.contains(Professor.class, professor.getProfessorId()));
 
         List<Professor> allprofs = professorWorker.listAll();
         for (Professor p : allprofs)

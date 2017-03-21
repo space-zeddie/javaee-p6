@@ -7,7 +7,7 @@ import java.util.List;
  * Created by matvii on 21.03.17.
  */
 @Entity
-@Cacheable(true)
+@Cacheable(cacheName="professorCache")
 @Table(name="Professors")
 @NamedQueries({
         @NamedQuery(name = Professor.FIND_ALL, query="select c from Professor c"),

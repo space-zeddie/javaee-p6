@@ -22,6 +22,10 @@
         <property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
     </bean>
 
+    <ehcache:annotation-driven cache-manager="cacheManager" />
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation"  value="ehcache.xml"/>
+    </bean>
 
     <bean id="emf" class= "org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceXmlLocation" value="persistence.xml" />

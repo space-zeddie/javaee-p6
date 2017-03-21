@@ -17,6 +17,11 @@ public class ProfessorDaoJPAImpl implements ProfessorDao {
 
     public Professor addProfessor(Professor professor) {
         em.persist(professor);
+
+        Cache cache = em.getEntityManagerFactory().getCache();
+        System.out.println(cache.contains(Professor.class, professor.getProfessorId()));
+        cache.evict(Professor.class);
+        System.out.println(cache.contains(Professor.class, professor.getProfessorId()));
         return professor;
     }
 
