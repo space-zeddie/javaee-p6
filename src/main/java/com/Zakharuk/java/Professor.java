@@ -8,7 +8,14 @@ import java.util.List;
  */
 @Entity
 @Table(name="Professors")
+@NamedQueries({
+        @NamedQuery(name = Professor.FIND_ALL, query="select c from Professor c"),
+        @NamedQuery(name = Professor.FIND_WITH_PARAM, query="select c from Professor c where c.firstName = :fname")
+})
 public class Professor {
+
+    public static final String FIND_ALL = "Professor.findAll";
+    public static final String FIND_WITH_PARAM = "Professor.findWithParam";
 
     @Id
     @GeneratedValue
